@@ -1,0 +1,73 @@
+Host                    *
+  ForwardAgent          yes
+  TCPKeepAlive 		yes
+  ServerAliveInterval	60000
+  ServerAliveCountMax 	5
+  UseKeychain 		yes
+  AddKeysToAgent 	yes
+  IdentityFile 		~/.ssh/id_rsa
+
+# WINTERTHUR
+# ssh wsstadt762.stadt.winroot.net
+Host                    hekate.win.ch
+    User                23siyv
+    ProxyCommand        ssh zope@beta.4teamwork.ch nc %h %p
+
+Host                    wsstadt762.stadt.winroot.net
+    User                zope
+    ProxyCommand        ssh 23siyv@hekate.win.ch nc %h %p
+
+Host intranetai
+    User zope
+    Hostname 194.147.134.48
+    ProxyCommand ssh -A zope@beta.4teamwork.ch nc %h %p 2> /dev/null
+
+Host *.4teamwork.ch
+    User zope
+
+Host tesla.4teamwork.ch lambo.4teamwork.ch app01t.4teamwork.ch
+    User ysi
+
+Host                    wsstadt730.stadt.winroot.net
+    User                zope
+    ProxyCommand        ssh 23siyv@hekate.win.ch nc %h %p
+
+Host geverai
+    User zope
+    Hostname gever.ai.ch
+    LocalForward 8080 localhost:10101
+    ProxyCommand ssh -A zope@beta.4teamwork.ch nc %h %p 2> /dev/null
+
+Host ai-ux-bumble
+    User zope
+    Hostname ai-ux-bumble.ai.ch
+    ProxyCommand ssh -A zope@geverdev.ai.ch nc %h %p 2> /dev/null
+
+Host aiintranet
+  Hostname 194.147.134.48
+  User zope
+  ProxyCommand ssh -A zope@beta.4teamwork.ch nc %h %p 2> /dev/null
+  ForwardAgent yes
+
+# Host          amun.4teamwork.ch
+# User zope
+# ProxyCommand ssh -A zope@beta.4teamwork.ch nc %h %p 2> /dev/null
+# ForwardAgent yes
+
+
+Host test-koeniz
+  User zope
+  Hostname test-gever.izrb.ch
+  ProxyCommand ssh -A zope@public.iz-net.ch nc %h %p 2> /dev/null
+  ForwardAgent yes
+
+Host gever.koeniz.ch
+  ProxyCommand ssh -A zope@public.iz-net.ch nc %h %p 2> /dev/null
+  ForwardAgent yes
+
+Host schulung-gever.koeniz.ch
+  ProxyCommand ssh -A zope@public.iz-net.ch nc %h %p 2> /dev/null
+  ForwardAgent yes
+
+Host tonegov02 tonegov02.tdlz2.tankred.ch
+  ProxyCommand ssh zope@beta.4teamwork.ch nc 10.0.3.74 %p 2>/dev/null

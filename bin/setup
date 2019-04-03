@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+mkdir -p ~/.ssh
+mkdir -p ~/.bin
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+ln -s zshrc ~/.zshrc
+ln -s zshenv ~/.zshenv
+ln -s zsh/cloud-light.zsh-theme ~/.oh-my-zsh/themes/
+
+curl -o ~/.bin/fasd https://raw.githubusercontent.com/clvv/fasd/master/fasd
+curl -o ~/.bin/git-ssh https://raw.githubusercontent.com/jone/dotfiles/master/bin/open-ssh-by-git-remote
+
+ln -s ssh/config ~/.ssh/config
