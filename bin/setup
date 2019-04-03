@@ -15,13 +15,21 @@ else
 fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-rm -f ~/.zshrc
-rm -f ~/.zshenv
-ln -s zshrc ~/.zshrc
-ln -s zshenv ~/.zshenv
-ln -s zsh/cloud-light.zsh-theme ~/.oh-my-zsh/themes/
+cd ~
+rm -f .zshrc
+rm -f .zshenv
+ln -s dotfiles/zshrc .zshrc
+ln -s dotfiles/zshenv .zshenv
 
-curl -o ~/.bin/fasd https://raw.githubusercontent.com/clvv/fasd/master/fasd
-curl -o ~/.bin/git-ssh https://raw.githubusercontent.com/jone/dotfiles/master/bin/open-ssh-by-git-remote
+cd ~/.zsh/themes
+ln -s ../../dotfiles/zsh/cloud-light.zsh-theme cloud-light.zsh-theme
 
-ln -s ssh/config ~/.ssh/config
+cd ~/.bin
+curl -O https://raw.githubusercontent.com/clvv/fasd/master/fasd
+curl -o ./git-ssh https://raw.githubusercontent.com/jone/dotfiles/master/bin/open-ssh-by-git-remote
+chmod +x fasd git-ssh
+
+cd ~/.ssh
+ln -s ../dotfiles/ssh/config ./config
+
+source ~/.zshrc
