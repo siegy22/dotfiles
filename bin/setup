@@ -18,11 +18,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 cd ~
 rm -f .zshrc
 rm -f .zshenv
-ln -s dotfiles/zshrc .zshrc
-ln -s dotfiles/zshenv .zshenv
+cp dotfiles/zshrc .zshrc
+cp dotfiles/zshenv .zshenv
 
 cd ~/.zsh/themes
-ln -s ../../dotfiles/zsh/cloud-light.zsh-theme cloud-light.zsh-theme
+ln -s ../../dotfiles/zsh/cloud-light.zsh-theme .
+ln -s ../../dotfiles/zsh/cloud-light-non-local.zsh-theme .
 
 cd ~/.bin
 curl -O https://raw.githubusercontent.com/clvv/fasd/master/fasd
