@@ -71,3 +71,35 @@ Host schulung-gever.koeniz.ch
 
 Host tonegov02 tonegov02.tdlz2.tankred.ch
   ProxyCommand ssh zope@beta.4teamwork.ch nc 10.0.3.74 %p 2>/dev/null
+
+##########################################################
+# 4teamwork Firewall Jumphost. Enable when on the road.
+##########################################################
+
+Host office
+  Hostname d9fw.4teamwork.ch
+  User ysi
+  LocalForward 15900 10.0.0.10:5900
+  DynamicForward 12345
+  ForwardAgent yes
+
+Host majestix
+  Hostname 10.0.0.10
+  User 4teamwork
+  ProxyJump office
+  ForwardAgent yes
+
+Host                    sg
+    Hostname            pus15803.pu1.uktsg.ch
+    User                zope
+    DynamicForward      5050
+    ProxyJump           majestix
+    LocalForward        8880 10.72.69.47:80
+    LocalForward        8881 10.72.69.47:81
+
+Host                    ps3papp808.ps3.sktsg.ch
+    ProxyJump           sg
+
+Host                    *.ps3.sktsg.ch *.pu1.uktsg.ch
+    User                zope
+    ProxyJump           majestix
