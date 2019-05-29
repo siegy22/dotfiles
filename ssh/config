@@ -22,7 +22,7 @@ Host intranetai
     Hostname 194.147.134.48
     ProxyCommand ssh -A zope@beta.4teamwork.ch nc %h %p 2> /dev/null
 
-Host tesla.4teamwork.ch lambo.4teamwork.ch app01t.4teamwork.ch app04t.4teamwork.ch kek.4teamwork.ch
+Host tesla.4teamwork.ch lambo.4teamwork.ch app01t.4teamwork.ch app04t.4teamwork.ch kek.4teamwork.ch nemti.4teamwork.ch
     User ysi
 
 Host *.4teamwork.ch
