@@ -433,66 +433,68 @@ before packages are loaded."
 
   (add-to-list 'auto-mode-alist '("\\.vue$" . web-mode))
 
-  (global-set-key (kbd "<C-return>") 'spacemacs/duplicate-line-or-region)
-  (global-set-key (kbd "<delete>") 'delete-char)
-  (global-set-key (kbd "C-x c") 'persp-switch)
-  (global-set-key (kbd "C-x f") 'spacemacs/search-project-auto)
-  (global-set-key (kbd "C-$") 'kill-current-buffer)
-  (global-set-key (kbd "C-c C-k") 'spacemacs/comment-or-uncomment-lines)
-  (global-set-key (kbd "C-c C-m") 'execute-extended-command)
-  (global-set-key (kbd "C-c k") 'kill-compilation)
-  (global-set-key (kbd "C-c n") 'spacemacs/indent-region-or-buffer)
-  (global-set-key (kbd "C-c r") 'revert-buffer)
-  (global-set-key (kbd "C-a") 'windmove-left)
-  (global-set-key (kbd "C-d") 'windmove-right)
-  (global-set-key (kbd "C-f") 'swiper)
-  (global-set-key (kbd "C-h a") 'apropos)
-  (global-set-key (kbd "C-o") 'counsel-find-file)
-  (global-set-key (kbd "C-s") 'windmove-down)
-  (global-set-key (kbd "C-s-SPC") 'mark-paragraph)
-  (global-set-key (kbd "C-w") 'windmove-up)
-  (global-set-key (kbd "C-w") 'windmove-up)
-  (global-set-key (kbd "C-x C-m") 'execute-extended-command)
-  (global-set-key (kbd "C-x b") 'projectile-switch-to-buffer)
-  (global-set-key (kbd "C-x g") 'magit-status)
-  (global-set-key (kbd "C-x o") 'projectile-find-file)
-  (global-set-key (kbd "C-x p") 'spacemacs/ivy-persp-switch-project)
-  (global-set-key (kbd "H-0") 'delete-window)
-  (global-set-key (kbd "H-1") 'delete-other-windows)
-  (global-set-key (kbd "H-2") 'split-window-vertically)
-  (global-set-key (kbd "H-3") 'split-window-horizontally)
-  (global-set-key (kbd "H-4") 'balance-windows)
-  (global-set-key (kbd "H-<down>") 'drag-stuff-down)
-  (global-set-key (kbd "H-<up>") 'drag-stuff-up)
-  (global-set-key (kbd "H-b") 'pop-to-mark-command)
-  (global-set-key (kbd "H-C-i") 'scroll-down)
-  (global-set-key (kbd "H-C-j") 'beginning-of-line)
-  (global-set-key (kbd "H-C-k") 'scroll-up)
-  (global-set-key (kbd "H-C-l") 'end-of-line)
-  (global-set-key (kbd "H-D") 'backward-kill-word)
-  (global-set-key (kbd "H-DEL") 'kill-line)
-  (global-set-key (kbd "H-F") 'kill-word)
-  (global-set-key (kbd "H-H") 'end-of-buffer)
-  (global-set-key (kbd "H-I") 'scroll-down)
-  (global-set-key (kbd "H-J") 'beginning-of-line)
-  (global-set-key (kbd "H-K") 'scroll-up)
-  (global-set-key (kbd "H-L") 'end-of-line)
-  (global-set-key (kbd "H-S-SPC") 'mark-paragraph)
-  (global-set-key (kbd "H-SPC") 'set-mark-command)
-  (global-set-key (kbd "H-d") 'delete-backward-char)
-  (global-set-key (kbd "H-e") 'ruby-test-run)
-  (global-set-key (kbd "H-f") 'delete-char)
-  (global-set-key (kbd "H-h") 'beginning-of-buffer)
-  (global-set-key (kbd "H-i") 'previous-line)
-  (global-set-key (kbd "H-j") 'backward-char)
-  (global-set-key (kbd "H-k") 'next-line)
-  (global-set-key (kbd "H-l") 'forward-char)
-  (global-set-key (kbd "H-m") 'counsel-M-x)
-  (global-set-key (kbd "H-o") 'forward-word)
-  (global-set-key (kbd "H-r") 'replace-string)
-  (global-set-key (kbd "H-u") 'backward-word)
-  (global-set-key (kbd "H-z") 'undo)
-  (global-set-key (kbd "C-SPC") 'dabbrev-expand)
+  (bind-keys*
+   ("<C-return>" . spacemacs/duplicate-line-or-region)
+   ("C-x c" . persp-switch)
+   ("C-x f" . spacemacs/search-project-auto)
+   ("C-$" . kill-current-buffer)
+   ("C-c C-k" . spacemacs/comment-or-uncomment-lines)
+   ("C-c C-m" . execute-extended-command)
+   ("C-c k" . kill-compilation)
+   ("C-c n" . spacemacs/indent-region-or-buffer)
+   ("C-c r" . revert-buffer)
+   ("C-a" . windmove-left)
+   ("C-d" . windmove-right)
+   ("C-f" . swiper)
+   ("C-h a" . apropos)
+   ("C-o" . counsel-find-file)
+   ("C-s" . windmove-down)
+   ("C-s-SPC" . mark-paragraph)
+   ("C-w" . windmove-up)
+   ("C-w" . windmove-up)
+   ("C-x C-m" . execute-extended-command)
+   ("C-x b" . projectile-switch-to-buffer)
+   ("C-x g" . magit-status)
+   ("C-x o" . projectile-find-file)
+   ("C-x p" . spacemacs/ivy-persp-switch-project)
+   ("H-0" . delete-window)
+   ("H-1" . delete-other-windows)
+   ("H-2" . split-window-vertically)
+   ("H-3" . split-window-horizontally)
+   ("H-4" . balance-windows)
+   ("H-<down>" . drag-stuff-down)
+   ("H-<up>" . drag-stuff-up)
+   ("H-b" . pop-to-mark-command)
+   ("H-C-i" . scroll-down)
+   ("H-C-j" . beginning-of-line)
+   ("H-C-k" . scroll-up)
+   ("H-C-l" . end-of-line)
+   ("H-D" . backward-kill-word)
+   ("H-DEL" . kill-line)
+   ("H-F" . kill-word)
+   ("H-H" . end-of-buffer)
+   ("H-I" . scroll-down)
+   ("H-J" . beginning-of-line)
+   ("H-K" . scroll-up)
+   ("H-L" . end-of-line)
+   ("H-S-SPC" . mark-paragraph)
+   ("H-SPC" . set-mark-command)
+   ("H-d" . delete-backward-char)
+   ("H-e" . ruby-test-run)
+   ("H-f" . delete-char)
+   ("H-h" . beginning-of-buffer)
+   ("H-i" . previous-line)
+   ("H-j" . backward-char)
+
+   ("H-k" . next-line)
+   ("H-l" . forward-char)
+   ("H-m" . counsel-M-x)
+   ("H-o" . forward-word)
+   ("H-r" . replace-string)
+   ("H-u" . backward-word)
+   ("H-z" . undo)
+   ("C-SPC" . dabbrev-expand))
+
 
   (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
   (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
@@ -525,22 +527,22 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
- '(evil-want-Y-yank-to-eol nil)
- '(package-selected-packages
-   (quote
-    (systemd smeargle orgit magit-gitflow magit-popup gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-pos-tip pos-tip flycheck evil-magit magit transient git-commit with-editor yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional cython-mode anaconda-mode pythonic web-mode tagedit slim-mode scss-mode sass-mode pug-mode haml-mode emmet-mode mmm-mode markdown-toc markdown-mode gh-md rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby spacemacs-theme yaml-mode ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(custom-safe-themes
+     (quote
+      ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
+   '(evil-want-Y-yank-to-eol nil)
+   '(package-selected-packages
+     (quote
+      (systemd smeargle orgit magit-gitflow magit-popup gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flycheck-pos-tip pos-tip flycheck evil-magit magit transient git-commit with-editor yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional cython-mode anaconda-mode pythonic web-mode tagedit slim-mode scss-mode sass-mode pug-mode haml-mode emmet-mode mmm-mode markdown-toc markdown-mode gh-md rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby spacemacs-theme yaml-mode ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy))))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
+  )
