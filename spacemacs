@@ -427,16 +427,16 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (delete-selection-mode 1)
 
+  (setq projectile-project-search-path '("~/projects/"))
+
   (setq mac-right-option-modifier nil)
-  ;; Allow C-w in magit-status
-  (with-eval-after-load 'magit-log
-    (define-key magit-log-mode-map (kbd "C-w") nil))
 
   (add-to-list 'auto-mode-alist '("\\.vue$" . web-mode))
 
   (global-set-key (kbd "<C-return>") 'spacemacs/duplicate-line-or-region)
   (global-set-key (kbd "<delete>") 'delete-char)
-  ;; (global-set-key (kbd "C-p s") 'persp-switch)
+  (global-set-key (kbd "C-x c") 'persp-switch)
+  (global-set-key (kbd "C-x f") 'spacemacs/search-project-auto)
   (global-set-key (kbd "C-$") 'kill-current-buffer)
   (global-set-key (kbd "C-c C-k") 'spacemacs/comment-or-uncomment-lines)
   (global-set-key (kbd "C-c C-m") 'execute-extended-command)
