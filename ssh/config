@@ -22,7 +22,7 @@ Host intranetai
     Hostname 194.147.134.48
     ProxyCommand ssh -A zope@beta.4teamwork.ch nc %h %p 2> /dev/null
 
-Host tesla.4teamwork.ch lambo.4teamwork.ch app01t.4teamwork.ch app04t.4teamwork.ch kek.4teamwork.ch nemti.4teamwork.ch
+Host app04p.4teamwork.ch tesla.4teamwork.ch lambo.4teamwork.ch app01t.4teamwork.ch app04t.4teamwork.ch kek.4teamwork.ch nemti.4teamwork.ch
     User ysi
 
 Host *.4teamwork.ch
@@ -90,7 +90,7 @@ Host majestix
   ForwardAgent yes
 
 Host                    sg
-    Hostname            pus15803.pu1.uktsg.ch
+    Hostname            ps3papp806.ps3.sktsg.ch
     User                zope
     DynamicForward      5050
     ProxyJump           majestix
@@ -102,9 +102,10 @@ Host                    ps3papp808.ps3.sktsg.ch
 
 Host                    *.ps3.sktsg.ch *.pu1.uktsg.ch
     User                zope
-    ProxyJump           majestix
+    ProxyJump           sg
 
 Host basel-dell
+  ProxyJump office
   Hostname 10.0.0.22
   User zope
 
@@ -115,3 +116,8 @@ Host pdstavs11.bs.ch
 Host pdstavs11t.bs.ch
   ProxyJump basel-dell
   ForwardAgent yes
+
+Host fmh39.fmh.fmh fmh39
+   User ysi
+   Hostname 172.16.32.119
+   ProxyJump ysi@adm04p.4teamwork.ch
