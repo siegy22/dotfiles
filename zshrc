@@ -153,3 +153,5 @@ alias gcam="git commit --amend --no-edit"
 
 eval "$(fasd --init posix-alias zsh-hook)"
 alias c='fasd_cd -d'
+
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
