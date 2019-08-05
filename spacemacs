@@ -436,6 +436,10 @@ before packages are loaded."
   (require 'exec-path-from-shell)
   (exec-path-from-shell-initialize)
 
+  (setq evil-emacs-state-cursor '(bar . 2))
+  (setq evil-normal-state-cursor '(bar . 2))
+  (setq cursor-type '(bar . 2))
+
   (delete-selection-mode 1)
 
   (setq projectile-project-search-path '("~/projects/"))
