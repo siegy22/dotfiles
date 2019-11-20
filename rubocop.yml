@@ -36,3 +36,6 @@ Metrics/CyclomaticComplexity:
 
 Metrics/AbcSize:
   Enabled: false
+  
+Style/ClassAndModuleChildren:
+  Enabled: false
