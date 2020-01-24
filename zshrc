@@ -45,6 +45,8 @@ COMPLETION_WAITING_DOTS="true"
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
+HISTSIZE=1000
+SAVEHIST=1000
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -86,7 +88,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 plugins=(bundler osx rake ruby git)
-source $HOME/.zshenv
 
 alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias r="rails"
@@ -150,8 +151,17 @@ alias gcaa="git commit -a --amend -C HEAD"
 alias ggui="git gui"
 
 alias gcam="git commit --amend --no-edit"
+alias gallcampf="git add -A && git commit --amend --no-edit && git push -f"
 
 eval "$(fasd --init posix-alias zsh-hook)"
+eval "$(fasd --init auto)"
 alias c='fasd_cd -d'
 
+eval "$(rbenv init -)"
+eval "$(pyenv init -)"
+eval "$(nodenv init -)"
+
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'

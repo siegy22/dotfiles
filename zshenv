@@ -1,8 +1,10 @@
-export EDITOR=emacs
+export PYTHONUNBUFFERED=True
+export EDITOR="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 
 export PATH="$PATH:$HOME/.bin"
-
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
-eval "$(pyenv init -)"
+export PYTHONSTARTUP=~/.pythonrc
+export PGHOST="/tmp"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
