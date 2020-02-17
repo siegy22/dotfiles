@@ -157,6 +157,8 @@ eval "$(fasd --init posix-alias zsh-hook)"
 eval "$(fasd --init auto)"
 alias c='fasd_cd -d'
 
+alias vpn_zug="sudo openconnect --juniper -u EXSIYV https://vpn.zg.ch/sas"
+
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 eval "$(nodenv init -)"

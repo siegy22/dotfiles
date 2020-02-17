@@ -123,3 +123,18 @@ Host gever.muri-guemligen.ch gever-muri
     Hostname gever.muri-guemligen.ch
     ProxyJump zope@public.iz-net.ch
     ForwardAgent yes
+
+Host vpn_zg
+    ProxyJump           office
+    Hostname            10.0.0.161
+    User                vpn
+
+Host zg
+    Hostname            0000oglx15.zg.ch
+    ProxyJump           vpn_zg
+    User                zope
+    DynamicForward      4070
+
+Host *.zg.ch
+    ProxyJump           vpn_zg
+    User                zope
