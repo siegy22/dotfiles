@@ -20,13 +20,18 @@ Host                    wsstadt762.stadt.winroot.net
 Host intranetai
     User zope
     Hostname 194.147.134.48
-    ProxyCommand ssh -A zope@beta.4teamwork.ch nc %h %p 2> /dev/null
+    ProxyJump jump.4teamwork.ch
 
-Host app*.4teamwork.ch tesla.4teamwork.ch lambo.4teamwork.ch kek.4teamwork.ch nemti.4teamwork.ch seth.4teamwork.ch
+Host jump.4teamwork.ch
     User ysi
+
+Host app*.4teamwork.ch tesla.4teamwork.ch lambo.4teamwork.ch kek.4teamwork.ch nemti.4teamwork.ch seth.4teamwork.ch benu.4teamwork.ch bugatti.4teamwork.ch mclaren
+    User ysi
+    ProxyJump office
 
 Host *.4teamwork.ch
     User zope
+
 
 Host                    wsstadt730.stadt.winroot.net
     User                zope
@@ -35,18 +40,26 @@ Host                    wsstadt730.stadt.winroot.net
 Host geverai
     User zope
     Hostname gever.ai.ch
-    LocalForward 8080 localhost:10101
-    ProxyCommand ssh -A zope@beta.4teamwork.ch nc %h %p 2> /dev/null
+    ProxyJump intranetai
 
 Host ai-ux-bumble.ai.ch
     User zope
-    ProxyJump geverai
+    LocalForward  20001 localhost:10101
+    ProxyJump intranetai
 
 Host aiintranet
   Hostname 194.147.134.48
   User zope
   ProxyCommand ssh -A zope@beta.4teamwork.ch nc %h %p 2> /dev/null
   ForwardAgent yes
+ 
+Host ai
+  Hostname 194.147.134.48
+  User zope
+  ProxyCommand ssh -A zope@beta.4teamwork.ch nc %h %p 2> /dev/null
+  ForwardAgent yes
+  DynamicForward 4054
+
 
 # Host          amun.4teamwork.ch
 # User zope
@@ -57,6 +70,9 @@ Host *.koeniz.ch
   ProxyCommand ssh -A zope@public.iz-net.ch nc %h %p 2> /dev/null
   User zope
   ForwardAgent yes
+
+Host public.iz-net.ch
+  ProxyJump office
 
 Host tonegov02 tonegov02.tdlz2.tankred.ch gevernidau
    User zope
@@ -69,6 +85,7 @@ Host tonegov02 tonegov02.tdlz2.tankred.ch gevernidau
 ##########################################################
 
 Host office
+  ProxyJump jump.4teamwork.ch
   Hostname d9fw.4teamwork.ch
   User ysi
   LocalForward 15900 10.0.0.10:5900
@@ -101,18 +118,42 @@ Host basel-dell
   Hostname 10.0.0.22
   User zope
 
-Host pdstavs11.bs.ch
-  ProxyJump basel-dell
-  ForwardAgent yes
+Host pdstavs11 pdstavs11.bs.ch
+  User zope
+  Hostname localhost
+  Port 8022
+  ProxyJump ysi@adm04p.4teamwork.ch
 
 Host pdstavs11t.bs.ch
   ProxyJump basel-dell
   ForwardAgent yes
 
+Host fmh
+   User ysi
+   Hostname 172.16.32.119
+   DynamicForward 4052
+   ProxyJump ysi@adm04p.4teamwork.ch
+
 Host fmh39.fmh.fmh fmh39
    User ysi
    Hostname 172.16.32.119
    ProxyJump ysi@adm04p.4teamwork.ch
+
+Host fmh46.fmh.fmh fmh46
+   User ysi
+   Hostname 172.16.32.126
+   ProxyJump ysi@adm04p.4teamwork.ch
+
+Host fmh41.fmh.fmh fmh41
+   User ysi
+   Hostname 172.16.32.117
+   ProxyJump ysi@adm04p.4teamwork.ch
+
+Host fmh141.fmh2.fmh fmh141
+   User ysi
+   Hostname 172.16.35.51
+   ProxyJump ysi@adm04p.4teamwork.ch
+
 
 Host hey.i234.me
     User siegy
@@ -133,8 +174,28 @@ Host zg
     Hostname            0000oglx15.zg.ch
     ProxyJump           vpn_zg
     User                zope
-    DynamicForward      4070
+    DynamicForward      4051
+
+Host ktzglx*.zg.ch
+    User                ysi
 
 Host *.zg.ch
-    ProxyJump           vpn_zg
+    # ProxyJump           vpn_zg
     User                zope
+
+Host benu
+    Hostname            benu.4teamwork.ch
+    ProxyJump           office
+    User                ysi
+
+Host phvs rms.hepvs.ch
+  Hostname rms.hepvs.ch
+  User zope
+  ProxyJump jump.4teamwork.ch
+  ForwardAgent yes
+  DynamicForward 4055
+
+Host vlmrmsconv.hepvs.ch
+  User zope
+  ProxyJump phvs
+  ForwardAgent yes
