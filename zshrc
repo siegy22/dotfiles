@@ -91,7 +91,7 @@ plugins=(bundler osx rake ruby git)
 
 alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias r="rails"
-alias e="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --no-wait"
+alias e="~/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --no-wait"
 
 # Git aliases:
 alias gcl='git clone'
@@ -165,5 +165,5 @@ eval "$(nodenv init -)"
 
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+# source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+# source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
