@@ -5,8 +5,12 @@ set -euo pipefail
 mkdir -p ~/.ssh
 mkdir -p ~/.bin
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
 if [ -x "$(command -v brew)" ]; then
-    brew install zsh
+    brew bundle
 elif [ -x "$(command -v apt)" ]; then
     sudo apt install zsh
 else
@@ -14,21 +18,19 @@ else
     exit 1
 fi
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 cd ~
 rm -f .zshrc
 rm -f .zshenv
-cp dotfiles/zshrc .zshrc
-cp dotfiles/zshenv .zshenv
+ln -s dotfiles/zshrc .zshrc
+ln -s dotfiles/zshenv .zshenv
 
 cd ~/.zsh/themes
 ln -s ../../dotfiles/zsh/cloud-light.zsh-theme .
 ln -s ../../dotfiles/zsh/cloud-light-non-local.zsh-theme .
 
 cd ~/.bin
-curl -O https://raw.githubusercontent.com/clvv/fasd/master/fasd
 curl -o ./git-ssh https://raw.githubusercontent.com/jone/dotfiles/master/bin/open-ssh-by-git-remote
-chmod +x fasd git-ssh
+chmod +x git-ssh
 
 cd ~/.ssh
 ln -s ../dotfiles/ssh/config ./config
