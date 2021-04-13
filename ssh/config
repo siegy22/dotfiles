@@ -130,7 +130,7 @@ Host pdstavs11t.bs.ch
 
 Host fmh
    User ysi
-   Hostname 172.16.32.119
+   Hostname 172.16.32.125
    DynamicForward 4052
    ProxyJump ysi@adm04p.4teamwork.ch
 
@@ -180,7 +180,7 @@ Host ktzglx*.zg.ch
     User                ysi
 
 Host *.zg.ch
-    # ProxyJump           vpn_zg
+    ProxyJump           vpn_zg
     User                zope
 
 Host benu
