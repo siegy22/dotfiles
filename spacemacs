@@ -479,6 +479,9 @@ before packages are loaded."
             (lambda ()
               (setq web-mode-script-padding 0)
               (setq web-mode-style-padding 0)))
+  (add-hook 'magit-mode-hook
+            (lambda()
+              (local-unset-key (kbd "C-w"))))
 
   (add-to-list 'auto-mode-alist '("\\.vue$" . web-mode))
 
