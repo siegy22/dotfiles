@@ -1238,6 +1238,24 @@
             "appdir": "~/Applications"
           }
         }
+      },
+      "zoom": {
+        "version": "5.5.13130.0228",
+        "options": {
+          "full_name": "zoom",
+          "args": {
+            "appdir": "~/Applications"
+          }
+        }
+      },
+      "postman": {
+        "version": "8.0.6",
+        "options": {
+          "full_name": "postman",
+          "args": {
+            "appdir": "~/Applications"
+          }
+        }
       }
     }
   },
