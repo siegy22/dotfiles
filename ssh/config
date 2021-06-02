@@ -199,3 +199,6 @@ Host vlmrmsconv.hepvs.ch
   User zope
   ProxyJump phvs
   ForwardAgent yes
+
+Host zgchkrg.4teamwork.ch
+  ProxyJump office
