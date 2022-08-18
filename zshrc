@@ -92,6 +92,7 @@ plugins=(bundler osx rake ruby git)
 alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias r="rails"
 alias e="~/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --no-wait"
+alias dc="docker-compose"
 
 # Git aliases:
 alias gcl='git clone'
@@ -160,10 +161,20 @@ alias c='fasd_cd -d'
 alias vpn_zug="sudo openconnect --juniper -u EXSIYV https://vpn.zg.ch/sas"
 
 eval "$(rbenv init -)"
-eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 eval "$(nodenv init -)"
 
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 # source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+alias k=kubectl
+alias ks=kubectx
+alias kns=kubens
+alias koff=kubeoff
+alias kon=kubeon
+alias seal="kubeseal --controller-namespace kube-system --controller-name sealed-secrets --format yaml"
+alias argo="sh -c 'sleep 0.5 && open http://localhost:6001' &; kubectl port-forward -n argocd svc/argocd-server 6001:80"
+alias longhorn="sh -c 'sleep 0.5 && open http://localhost:6002' &; kubectl port-forward deployment/longhorn-ui 6002:8000 -n longhorn-system"
+alias rand64="openssl rand -hex 25 | tr -d '\n' | base64 | tr -d '\n' | pbcopy"

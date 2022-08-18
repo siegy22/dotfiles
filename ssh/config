@@ -25,7 +25,7 @@ Host intranetai
 Host jump.4teamwork.ch
     User ysi
 
-Host app*.4teamwork.ch tesla.4teamwork.ch lambo.4teamwork.ch kek.4teamwork.ch nemti.4teamwork.ch seth.4teamwork.ch benu.4teamwork.ch bugatti.4teamwork.ch mclaren
+Host adm04p.4teamwork.ch app*.4teamwork.ch tesla.4teamwork.ch lambo.4teamwork.ch kek.4teamwork.ch nemti.4teamwork.ch seth.4teamwork.ch benu.4teamwork.ch bugatti.4teamwork.ch mclaren
     User ysi
     ProxyJump office
 
@@ -71,6 +71,14 @@ Host *.koeniz.ch
   User zope
   ForwardAgent yes
 
+Host koeniz
+  Hostname gever.koeniz.ch
+  DynamicForward 4065
+  ProxyCommand ssh -A zope@public.iz-net.ch nc %h %p 2> /dev/null
+  User zope
+  ForwardAgent yes
+
+
 Host public.iz-net.ch
   ProxyJump office
 
@@ -113,20 +121,22 @@ Host                    *.ps3.sktsg.ch *.pu1.uktsg.ch
     User                zope
     ProxyJump           sg
 
-Host basel-dell
-  ProxyJump office
-  Hostname 10.0.0.22
-  User zope
+Host                    bs-dls1
+    Hostname            pdstasvsdls10t.bs.ch
 
-Host pdstavs11 pdstavs11.bs.ch
-  User zope
-  Hostname localhost
-  Port 8022
-  ProxyJump ysi@adm04p.4teamwork.ch
+Host                    bs-dls2
+    Hostname            pdstasvdls01t.bs.ch
 
-Host pdstavs11t.bs.ch
-  ProxyJump basel-dell
-  ForwardAgent yes
+Host                    bs-dls* *.bs.ch
+    User                a2otrp
+    DynamicForward      4040
+    ProxyJump           bs-jump
+
+Host                    bs-jump
+    Hostname            localhost
+    User                a2otrp
+    Port                8022
+    ProxyJump           adm04p.4teamwork.ch
 
 Host fmh
    User ysi
@@ -183,8 +193,8 @@ Host *.zg.ch
     ProxyJump           vpn_zg
     User                zope
 
-Host benu
-    Hostname            benu.4teamwork.ch
+Host benu.4teamwork.ch
+    User ysi
     ProxyJump           office
     User                ysi
 
@@ -202,3 +212,8 @@ Host vlmrmsconv.hepvs.ch
 
 Host zgchkrg.4teamwork.ch
   ProxyJump office
+
+Host xfkdsilo01 dls-prod
+  User X110597
+  Hostname xfkdsilo01.bl.ch
+  ProxyJump fziwebblbe01.bl.ch
