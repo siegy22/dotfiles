@@ -20,7 +20,7 @@ else
     exit 1
 fi
 
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true
 
 cd ~
 rm -f .zshrc
@@ -28,13 +28,9 @@ rm -f .zshenv
 ln -s dotfiles/zshrc .zshrc
 ln -s dotfiles/zshenv .zshenv
 
-cd ~/.zsh/themes
+cd ~/.oh-my-zsh/themes
 ln -s ../../dotfiles/zsh/cloud-light.zsh-theme .
 ln -s ../../dotfiles/zsh/cloud-light-non-local.zsh-theme .
-
-cd ~/.bin
-curl -o ./git-ssh https://raw.githubusercontent.com/jone/dotfiles/master/bin/open-ssh-by-git-remote
-chmod +x git-ssh
 
 cd ~/.ssh
 ln -s ../dotfiles/ssh/config ./config
