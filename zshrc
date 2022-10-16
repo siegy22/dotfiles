@@ -158,16 +158,9 @@ eval "$(fasd --init posix-alias zsh-hook)"
 eval "$(fasd --init auto)"
 alias c='fasd_cd -d'
 
-alias vpn_zug="sudo openconnect --juniper -u EXSIYV https://vpn.zg.ch/sas"
-
 eval "$(rbenv init -)"
 eval "$(pyenv init --path)"
 eval "$(nodenv init -)"
-
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-
-# source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-# source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 alias k=kubectl
 alias ks=kubectx
