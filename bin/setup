@@ -29,10 +29,13 @@ ln -s dotfiles/zshrc .zshrc
 ln -s dotfiles/zshenv .zshenv
 
 cd ~/.oh-my-zsh/themes
-ln -s ../../dotfiles/zsh/cloud-light.zsh-theme .
+rm -f cloud-light.zsh-theme
+rm -f cloud-light-non-local.zsh-theme
+ln -s ../../dotfiles/zsh/cloud-light.zsh-theme . 
 ln -s ../../dotfiles/zsh/cloud-light-non-local.zsh-theme .
 
 cd ~/.ssh
+rm -f ./config
 ln -s ../dotfiles/ssh/config ./config
 
 source ~/.zshrc
