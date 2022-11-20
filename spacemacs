@@ -32,6 +32,7 @@ This function should only modify configuration layer settings."
    '(csv
      rust
      nginx
+     csharp
      (javascript :variables
                  js-indent-level 2
                  js2-strict-missing-semi-warning nil
