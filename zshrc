@@ -9,7 +9,7 @@ export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="cloud-light"
+ZSH_THEME="cloud"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -91,7 +91,7 @@ plugins=(bundler osx rake ruby git)
 
 alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias r="rails"
-alias e="~/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --no-wait"
+alias e="emacsclient --no-wait"
 alias dc="docker-compose"
 
 # Git aliases:
@@ -158,16 +158,6 @@ eval "$(fasd --init posix-alias zsh-hook)"
 eval "$(fasd --init auto)"
 alias c='fasd_cd -d'
 
-eval "$(rbenv init -)"
-eval "$(pyenv init --path)"
-eval "$(nodenv init -)"
-
+eval "$(~/.rbenv/bin/rbenv init - zsh)"
 alias k=kubectl
-alias ks=kubectx
-alias kns=kubens
-alias koff=kubeoff
-alias kon=kubeon
-alias seal="kubeseal --controller-namespace kube-system --controller-name sealed-secrets --format yaml"
-alias argo="sh -c 'sleep 0.5 && open http://localhost:6001' &; kubectl port-forward -n argocd svc/argocd-server 6001:80"
-alias longhorn="sh -c 'sleep 0.5 && open http://localhost:6002' &; kubectl port-forward deployment/longhorn-ui 6002:8000 -n longhorn-system"
-alias rand64="openssl rand -hex 25 | tr -d '\n' | base64 | tr -d '\n' | pbcopy"
+alias seal="kubeseal --format yaml"
