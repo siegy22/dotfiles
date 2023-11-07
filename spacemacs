@@ -29,29 +29,15 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(csv
+   '(go
+     csv
      rust
      nginx
-     csharp
-     (javascript :variables
-                 js-indent-level 2
-                 js2-strict-missing-semi-warning nil
-                 js2-missing-semi-one-line-override nil)
-     (python :variables
-             python-test-runner 'pytest
-             python-formatter 'black
-             python-format-on-save t
-             python-sort-imports-on-save t)
+     javascript
+     python
+     html
      (ruby :variables
            ruby-version-manager 'rbenv)
-     (html :variables
-           web-mode-markup-indent-offset 2
-           web-mode-code-indent-offset 2
-           web-mode-css-indent-offset 2
-           web-mode-script-padding 0
-           web-mode-style-padding 0
-           css-indent-offset 2)
-     osx
      systemd
      sql
      markdown
@@ -65,6 +51,9 @@ This function should only modify configuration layer settings."
      syntax-checking
      auto-completion
      c-c++
+     kubernetes
+     terraform
+     puppet
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -73,7 +62,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(exec-path-from-shell drag-stuff)
+   dotspacemacs-additional-packages '(exec-path-from-shell drag-stuff sqlite3)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
