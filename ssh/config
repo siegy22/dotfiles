@@ -1,7 +1,6 @@
 Host                    *
-  ForwardAgent          yes
   TCPKeepAlive 		yes
   ServerAliveInterval	60000
   ServerAliveCountMax 	5
-  AddKeysToAgent 	yes
-  IdentityFile 		~/.ssh/id_ed25519
+  # Uncomment for MacOS 1Password
+  # IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
