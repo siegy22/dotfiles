@@ -52,108 +52,46 @@ SAVEHIST=1000
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew fasd bundler rake ruby git kube-ps1 terraform fasd ssh-agent)
-
-zstyle :omz:plugins:ssh-agent agent-forwarding yes
+plugins=(
+    git
+    ssh-agent
+    emacs
+    kubectl
+    fzf
+    brew
+    zoxide
+    bundler
+    rake
+    ruby
+    rails
+    terraform
+)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias r="rails"
-alias e="emacsclient --no-wait"
-alias dc="docker-compose"
-
-# Git aliases:
 alias gcl='git clone'
 alias ga='git add'
 alias gap='git add -p'
 alias gall='git add -A'
-alias gf='git fetch --all --prune'
-alias gft='git fetch --all --prune --tags'
-alias gfv='git fetch --all --prune --verbose'
-alias gftv='git fetch --all --prune --tags --verbose'
-alias gus='git reset HEAD'
-alias gm="git merge"
-alias g='git'
-alias get='git'
-alias gst='git status'
-alias gs='git status'
-alias gss='git status -s'
-alias gsu='git submodule update --init --recursive'
-alias gl='git pull'
-alias gpr='git pull --rebase'
-alias gpp='git pull && git push'
-alias gup='git fetch && git rebase'
-alias gp='git push'
-alias gpo='git push origin'
-alias gpu='git push --set-upstream'
-alias gpom='git push origin master'
-alias gdv='git diff -w "$@"'
-alias gc='git commit -v'
-alias gca='git commit -v -a'
-alias gcm='git commit -v -m'
-alias gci='git commit --interactive'
-alias gb='git branch'
-alias gba='git branch -a'
-alias gbt='git branch --track'
-alias gcount='git shortlog -sn'
-alias gcp='git cherry-pick'
-alias gco='git checkout'
-alias gcb='git checkout -b'
-alias gct='git checkout --track'
-alias gexport='git archive --format zip --output'
-alias gdel='git branch -D'
-alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
-alias gll='git log --graph --pretty=oneline --abbrev-commit'
 alias gg="git log --graph --pretty=format:'%C(bold)%h%Creset%C(magenta)%d%Creset %s %C(yellow)<%an> %C(cyan)(%cr)%Creset' --abbrev-commit --date=relative"
-alias ggs="gg --stat"
-alias gsl="git shortlog -sn"
-alias gw="git whatchanged"
-alias gt="git tag"
-alias gta="git tag -a"
-alias gtd="git tag -d"
-alias gtl="git tag -l"
-# From http://blogs.atlassian.com/2014/10/advanced-git-aliases/
-# Show commits since last pull
-alias gnew="git log HEAD@{1}..HEAD@{0}"
-# Add uncommitted and unstaged changes to the last commit
-alias gcaa="git commit -a --amend -C HEAD"
-alias ggui="git gui"
-
 alias gcam="git commit --amend --no-edit"
 alias gallcampf="git add -A && git commit --amend --no-edit && git push -f"
-alias c='fasd_cd -d'
 
-eval "$(rbenv init - zsh)"
-alias k=kubectl
+alias r="rails"
 alias seal="kubeseal --format yaml"
+alias dc="docker-compose"
+
+if [[ $(uname) == "Darwin" ]]; then
+    alias e="emacsclient --no-wait"
+else
+    alias e="emacs"
+fi
+
+if [[ -d "$HOME/.rbenv" ]]; then
+    eval "$(rbenv init - zsh)"
+fi
 
