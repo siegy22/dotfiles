@@ -1,0 +1,6 @@
+write-kubeconfig-mode: "0644"
+cluster-init: true
+disable: traefik,servicelb
+flannel-backend: none
+disable-network-policy: true
+secrets-encryption: true

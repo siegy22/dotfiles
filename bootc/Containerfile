@@ -1,0 +1,14 @@
+FROM quay.io/fedora/fedora-bootc:41
+
+RUN dnf install -y https://github.com/k3s-io/k3s-selinux/releases/download/v1.6.latest.1/k3s-selinux-1.6-1.coreos.noarch.rpm
+RUN curl --output /tmp/install-k3s.sh -L https://get.k3s.io && \
+    sed -i "/$SUDO systemctl daemon-reload >\/dev\/null/d" /tmp/install-k3s.sh && \
+    INSTALL_K3S_SKIP_START=true INSTALL_K3S_SKIP_SELINUX_RPM=true sh /tmp/install-k3s.sh && \
+    rm -f /tmp/install-k3s.sh
+
+ADD k3s_config.yaml /etc/rancher/k3s/config.yaml
+RUN echo $' \n\
+* soft nofile 4096 \n\
+* hard nofile 8192 \n\
+root soft nofile 4096 \n\
+root hard nofile 8192' >> /etc/security/limits.conf
