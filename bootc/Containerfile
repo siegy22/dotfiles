@@ -8,7 +8,5 @@ RUN curl --output /tmp/install-k3s.sh -L https://get.k3s.io && \
 
 ADD k3s_config.yaml /etc/rancher/k3s/config.yaml
 RUN echo $' \n\
-* soft nofile 4096 \n\
-* hard nofile 8192 \n\
-root soft nofile 4096 \n\
-root hard nofile 8192' >> /etc/security/limits.conf
+* soft nofile 65535 \n\
+* hard nofile 65535 \n' >> /etc/security/limits.conf
