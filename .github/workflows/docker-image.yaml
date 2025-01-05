@@ -2,8 +2,8 @@ name: Build and Push Docker Image
 
 on:
   schedule:
-    # Runs at midnight UTC every day
-    - cron: '0 0 * * *'
+    # Weekly OS builds
+    - cron: '0 0 */7 * *'
   push:
     # Trigger the workflow when changes occur in the bootc/ directory
     paths:
