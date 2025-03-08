@@ -70,7 +70,7 @@ plugins=(
 )
 
 # For gnome desktops, multitab tmux split panes
-if [[ command -v gnome-shell 2>&1 >/dev/null ]]; then
+if command -v gnome-shell 2>&1 >/dev/null; && [ -z "$INSIDE_EMACS" ]; then
     plugins+=('tmux')
     export ZSH_TMUX_AUTOSTART=true
     export ZSH_TMUX_AUTOCONNECT=false
