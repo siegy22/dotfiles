@@ -65,8 +65,16 @@ plugins=(
     ruby
     rails
     terraform
+    docker
+    docker-compose
 )
 
+# For gnome desktops, multitab tmux split panes
+if [[ command -v gnome-shell 2>&1 >/dev/null ]]; then
+    plugins+=('tmux')
+    export ZSH_TMUX_AUTOSTART=true
+    export ZSH_TMUX_AUTOCONNECT=false
+fi
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
