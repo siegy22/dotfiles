@@ -55,7 +55,10 @@ This function should only modify configuration layer settings."
      auto-completion
      c-c++
      kubernetes
-     terraform
+     (terraform :variables
+                terraform-auto-format-on-save t
+                terraform-command "tofu"
+                terraform-backend 'lsp)
      puppet
      )
    ;; List of additional packages that will be installed without being
@@ -189,7 +192,7 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 0.8)
 
 
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -197,10 +200,10 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 12
+                               :size 13
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 0.8)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
 
@@ -284,12 +287,12 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
 
    ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
    ;; variable with `dotspacemacs-maximized-at-startup' in OSX to obtain
    ;; borderless fullscreen. (default nil)
-   dotspacemacs-undecorated-at-startup nil
+   dotspacemacs-undecorated-at-startup t
 
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
@@ -455,7 +458,8 @@ before packages are loaded."
               (local-unset-key (kbd "C-w"))))
 
   (bind-keys*
-   ("C-z" . undo-tree-undo)
+   ("M-z" . undo-fu-only-undo)
+   ("M-S-z" . undo-fu-only-redo)
    ("<C-return>" . spacemacs/duplicate-line-or-region)
    ("C-x c" . persp-switch)
    ("C-x f" . spacemacs/search-project-auto)
@@ -473,13 +477,12 @@ before packages are loaded."
    ("C-s" . windmove-down)
    ("C-s-SPC" . mark-paragraph)
    ("C-w" . windmove-up)
-   ("C-w" . windmove-up)
    ("C-x C-m" . execute-extended-command)
    ("C-x b" . projectile-switch-to-buffer)
    ("C-x g" . magit-status)
    ("C-x o" . projectile-find-file)
    ("C-x p" . spacemacs/ivy-persp-switch-project)
-   ("C-SPC" . dabbrev-expand)
+   ("C-SPC" . set-mark-command)
    ("S-SPC" . set-mark-command)
    ("M-0" . delete-window)
    ("M-1" . delete-other-windows)
@@ -501,7 +504,6 @@ before packages are loaded."
    ("M-J" . beginning-of-line)
    ("M-K" . scroll-up)
    ("M-L" . end-of-line)
-   ;; ("M-S-SPC" . mark-paragraph)
    ("M-d" . delete-backward-char)
    ("M-e" . ruby-test-run)
    ("M-f" . delete-char)
